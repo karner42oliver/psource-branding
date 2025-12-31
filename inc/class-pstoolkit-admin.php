@@ -303,22 +303,6 @@ if ( ! class_exists( 'PSToolkit_Admin' ) ) {
 			}
 
 			global $wp_version;
-			if ( version_compare( $wp_version, '5.2', '<' ) && ! wp_script_is( 'clipboard' ) ) {
-				wp_register_script(
-					'clipboard',
-					pstoolkit_url( 'external/clipboard/clipboard.js' ),
-					array(),
-					$this->build,
-					true
-				);
-			}
-			wp_register_script(
-				'pstoolkit-sui-ace',
-				pstoolkit_url( 'external/ace/ace.js' ),
-				array(),
-				$this->build,
-				true
-			);
 			wp_register_script(
 				'pstoolkit-sui-a11y-dialog',
 				pstoolkit_url( 'external/a11y-dialog/a11y-dialog.js' ),
@@ -345,7 +329,7 @@ if ( ! class_exists( 'PSToolkit_Admin' ) ) {
 				wp_register_script(
 					'sui-scripts',
 					pstoolkit_url( 'assets/js/shared-ui.js' ),
-					array( 'jquery', 'clipboard', 'pstoolkit-sui-ace', 'pstoolkit-sui-a11y-dialog', 'pstoolkit-sui-select2' ),
+					array( 'jquery', 'pstoolkit-sui-ace', 'pstoolkit-sui-a11y-dialog', 'pstoolkit-sui-select2' ),
 					$sui_body_class,
 					true
 				);
@@ -370,10 +354,9 @@ if ( ! class_exists( 'PSToolkit_Admin' ) ) {
 				pstoolkit_url( $file ),
 				array(
 					'jquery',
-					'jquery-effects-highlight',
 					'sui-scripts',
 					'underscore',
-					'wp-util',
+					'wp-util'
 				),
 				$this->build,
 				true
